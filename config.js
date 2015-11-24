@@ -2,20 +2,22 @@ System.config({
   baseURL: "/",
   defaultJSExtensions: true,
   transpiler: "typescript",
-  packages: {
-    "app": {
-      defaultExtension: 'ts'
-    }
-  },
   paths: {
     "npm:*": "jspm_packages/npm/*",
     "github:*": "jspm_packages/github/*"
+  },
+
+  packages: {
+    "app": {
+      "defaultExtension": "ts"
+    }
   },
 
   map: {
     "angular2": "npm:angular2@2.0.0-alpha.46",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "typescript": "npm:typescript@1.6.2",
+    "zone.js": "npm:zone.js@0.5.8",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
