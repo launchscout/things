@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import "zone.js";
 import { bootstrap, Component, CORE_DIRECTIVES } from "angular2";
+import ThingService from "./thing_service";
 
 @Component({
   templateUrl: "app/app.html",
@@ -8,14 +9,15 @@ import { bootstrap, Component, CORE_DIRECTIVES } from "angular2";
   directives: [CORE_DIRECTIVES]
 })
 class App {
-  constructor() {
-    this.things = [{id: 1, name: "Thing one"}, {id: 2, name: "Thing two"}];
+  constructor(thingService: ThingService) {
     this.newThing = {name: ""};
+    this.things = thingService.things;
+    this.thingService = thingService;
   }
   addThing() {
-    this.things.push(this.newThing);
+    this.thingService.addThing(this.newThing);
     this.newThing = {};
   }
 }
 
-bootstrap(App, []);
+bootstrap(App, [ThingService]);

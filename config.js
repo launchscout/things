@@ -2,6 +2,9 @@ System.config({
   baseURL: "/",
   defaultJSExtensions: true,
   transpiler: "typescript",
+  typescriptOptions: {
+    "emitDecoratorMetadata": true
+  },
   paths: {
     "npm:*": "jspm_packages/npm/*",
     "github:*": "jspm_packages/github/*"
