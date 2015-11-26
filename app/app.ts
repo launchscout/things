@@ -20,8 +20,11 @@ class App {
 
   }
   addThing() {
-    this.thingService.addThing(this.newThing);
-    this.newThing = {};
+    this.thingService.addThing(this.newThing).subscribe( (res) => {
+      console.log(res);
+      this.things.push(res.data);
+      this.newThing = {};
+    });
   }
 }
 

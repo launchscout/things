@@ -1,4 +1,4 @@
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
+import {Http, HTTP_PROVIDERS, Headers} from 'angular2/http';
 import {Injectable} from "angular2";
 
 @Injectable()
@@ -12,7 +12,12 @@ class ThingService {
   }
 
   addThing(thing) {
-    this.things.push(thing);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:4000/api/things',
+      JSON.stringify({thing: thing}),
+      {headers: headers}
+    ).map(res => res.json());
   }
 }
 
