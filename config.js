@@ -18,6 +18,7 @@ System.config({
 
   map: {
     "angular2": "npm:angular2@2.0.0-alpha.46",
+    "angular2-phoenix-channels": "npm:angular2-phoenix-channels@0.0.1",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "typescript": "npm:typescript@1.6.2",
     "zone.js": "npm:zone.js@0.5.8",
@@ -59,6 +60,10 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
+    "npm:angular2-phoenix-channels@0.0.1": {
+      "angular2": "npm:angular2@2.0.0-alpha.46",
+      "phoenix_js": "npm:phoenix_js@0.0.2"
+    },
     "npm:angular2@2.0.0-alpha.46": {
       "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -67,7 +72,7 @@ System.config({
       "reflect-metadata": "npm:reflect-metadata@0.1.2",
       "zone.js": "npm:zone.js@0.5.8"
     },
-    "npm:asn1.js@4.0.0": {
+    "npm:asn1.js@4.1.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "bn.js": "npm:bn.js@4.3.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -216,7 +221,7 @@ System.config({
       "brorand": "npm:brorand@1.0.5"
     },
     "npm:parse-asn1@5.0.0": {
-      "asn1.js": "npm:asn1.js@4.0.0",
+      "asn1.js": "npm:asn1.js@4.1.0",
       "browserify-aes": "npm:browserify-aes@1.0.5",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
@@ -235,6 +240,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:phoenix_js@0.0.2": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"

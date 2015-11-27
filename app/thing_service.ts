@@ -1,10 +1,14 @@
 import {Http, HTTP_PROVIDERS, Headers} from 'angular2/http';
 import {Injectable} from "angular2";
+import PhoenixChannels from "angular2-phoenix-channels";
 
 @Injectable()
 class ThingService {
-  constructor(http: Http) {
+  constructor(http: Http, phoenixChannels: PhoenixChannels) {
     this.http = http;
+    this.phoenixChannels = phoenixChannels;
+    let thingsChannel = this.phoenixChannels.channel("things:all");
+    thingsChannel.join().subscribe( () => { console.log("joined!"); });
   }
 
   getThings() {
