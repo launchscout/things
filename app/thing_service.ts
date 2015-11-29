@@ -1,5 +1,5 @@
 import {Http, HTTP_PROVIDERS, Headers} from 'angular2/http';
-import {Injectable} from "angular2";
+import {Injectable, Observable} from "angular2";
 import PhoenixChannels from "angular2-phoenix-channels";
 
 @Injectable()
@@ -7,12 +7,14 @@ class ThingService {
   constructor(http: Http, phoenixChannels: PhoenixChannels) {
     this.http = http;
     this.phoenixChannels = phoenixChannels;
-    let thingsChannel = this.phoenixChannels.channel("things:all");
-    thingsChannel.join().subscribe( () => { console.log("joined!"); });
+    this.thingsChannel = this.phoenixChannels.channel("things:all");
+    this.thingsChannel.join().subscribe( () => { console.log("joined!"); });
   }
 
   getThings() {
-    return this.http.get('http://localhost:4000/api/things').map(res => res.json())
+    channelObservable = this.thingsChannel.observeMessage("change")
+    httpObservable = this.http.get('http://localhost:4000/api/things').map(res => res.json())
+    return Observable.merge(channelObservable, httpObservable);
   }
 
   addThing(thing) {
