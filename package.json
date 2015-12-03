@@ -1,7 +1,8 @@
 {
   "jspm": {
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-alpha.46",
+      "angular": "npm:angular@^1.4.8",
+      "angular2": "npm:angular2@^2.0.0-alpha.47",
       "angular2-phoenix-channels": "npm:angular2-phoenix-channels@^0.0.1",
       "reflect-metadata": "npm:reflect-metadata@^0.1.2",
       "zone.js": "npm:zone.js@^0.5.8"

@@ -1,9 +1,14 @@
+import * as angular from "angular";
 import "reflect-metadata";
 import "zone.js";
-import { bootstrap, Component, CORE_DIRECTIVES, provide } from "angular2";
+import { bootstrap, Component, CORE_DIRECTIVES, provide, UpgradeAdapter } from "angular2";
 import ThingService from "./thing_service";
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import PhoenixChannels from "angular2-phoenix-channels";
+
+
+var ng1module = angular.module("ng1Module", []);
+var upgradeAdapter = new UpgradeAdapter();
 
 @Component({
   templateUrl: "app/app.html",
@@ -32,4 +37,12 @@ let phoenixChannelsProvider = provide(PhoenixChannels, { useFactory: () => {
   return new PhoenixChannels("ws://localhost:4000/socket");
 } });
 
-bootstrap(App, [ThingService, HTTP_PROVIDERS, phoenixChannelsProvider]);
+upgradeAdapter.addProvider(ThingService);
+upgradeAdapter.addProvider(HTTP_PROVIDERS);
+upgradeAdapter.addProvider(phoenixChannelsProvider);
+ng1module.directive('app', upgradeAdapter.downgradeNg2Component(App));
+// bootstrap(App, [ThingService, HTTP_PROVIDERS, phoenixChannelsProvider]);
+
+export function main() {
+  upgradeAdapter.bootstrap(document.body, ['ng1Module']);
+}
