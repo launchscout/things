@@ -1,6 +1,9 @@
 import {Http, HTTP_PROVIDERS, Headers} from 'angular2/http';
-import {Injectable, Observable} from "angular2";
+import {Injectable } from "angular2/core";
 import PhoenixChannels from "angular2-phoenix-channels";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/merge";
+import {Observable} from "rxjs";
 
 @Injectable()
 class ThingService {
@@ -12,8 +15,8 @@ class ThingService {
   }
 
   getThings() {
-    channelObservable = this.thingsChannel.observeMessage("change")
-    httpObservable = this.http.get('http://localhost:4000/api/things').map(res => res.json())
+    channelObservable = this.thingsChannel.observeMessage("change");
+    httpObservable = this.http.get('http://localhost:4000/api/things').map(res => res.json());
     return Observable.merge(channelObservable, httpObservable);
   }
 

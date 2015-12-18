@@ -1,14 +1,13 @@
-import "reflect-metadata";
-import "zone.js";
-import { bootstrap, Component, CORE_DIRECTIVES, provide } from "angular2";
+import { bootstrap } from "angular2/platform/browser";
+import { Component, CORE_DIRECTIVES, provide } from "angular2/core";
 import ThingService from "./thing_service";
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import PhoenixChannels from "angular2-phoenix-channels";
 
 @Component({
   templateUrl: "app/app.html",
+  // template: "Hey",
   selector: "app",
-  directives: [CORE_DIRECTIVES]
 })
 class App {
   constructor(thingService: ThingService) {
