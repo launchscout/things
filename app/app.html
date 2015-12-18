@@ -2,5 +2,5 @@ These are the things.
 <ul>
   <li *ngFor="#thing of things">{{thing.name}}</li>
 </ul>
-<input name="newThing" [(ng-model)]="newThing.name" />
+<input name="newThing" [(ngModel)]="newThing.name" />
 <button (click)="addThing()">Add Thing</button>
